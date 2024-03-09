@@ -1,0 +1,24 @@
+<!--websites/delete_index.html------------------------------------->
+<title>delete index</title>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container text-center">
+    <p></p>
+    <i class="fas fa-exclamation-triangle" style="font-size: 60px; color: red;"></i>
+    <p></p>
+    <p>Are you sure you want to delete index "{{index.key_words}}"?</p>
+
+    <form action="{% url 'delete_index' index.id %}" method="POST"> {% csrf_token %}
+
+        <input type="text" id="confirmation_code" name="confirmation_code" placeholder="If YES, input delete code..." style="width: 50%;" required>
+        <p style="color: red;">{{msg}}</p>
+        <p></p>
+        <button class="btn btn-sm btn-danger" type="submit">Confirm</button>
+        <a class="btn btn-sm btn-info" href="/" autofocus style="margin-left: 50px;">Cancel</a>
+
+
+    </form>
+</div>
+{% endblock content %}

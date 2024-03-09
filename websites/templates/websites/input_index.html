@@ -1,0 +1,28 @@
+<!--templates/websites/input_index.html--------------------------------------------------------------------->
+<title>New Index</title>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <p></p>
+    <h5>Index:</h5>
+    <p></p>
+
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{index_form}}
+        <p></p><br>
+        <button type="submit" name="index_form_submit">Save Index</button>
+        <button type="button" id="closeButton" style="margin-left: 30px; width: 100px;">Cancel</button>
+    </form>
+</div>
+
+   <!-- JavaScript to close the tab when the button is clicked -->
+<script>
+    document.getElementById('closeButton').addEventListener('click', function() {
+        // Close the current browser tab
+        // window.close();
+        window.location.href = '{% url "desktop" %}';
+    });
+</script>
+{% endblock content %}
